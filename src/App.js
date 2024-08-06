@@ -5,10 +5,10 @@ import ContactList from './components/ContactList'
 function App() {
   return (
     <div className="App">
-      <h1 className="font-serif font-bold text-orange-500"> hey kiran~!!</h1>
+      {/* <h1 className="font-serif font-bold text-orange-500"> hey kiran~!!</h1> */}
       <Header></Header>
-      {/* <AddContact></AddContact>
-      <ContactList></ContactList> */}
+      <AddContact></AddContact>
+      {/* <ContactList></ContactList> */}
     </div>
   );
 }
