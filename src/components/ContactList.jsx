@@ -1,13 +1,11 @@
 import React from 'react'
+import ContactCard from './ContactCard';
 
 const ContactList = ({contacts}) => {
     console.log(contacts);
     const renderList=contacts.map((contact)=>{
         return (
-          <div className='flex justify-center items-center gap-2 p-4'>
-            <div>{contact.name}</div>
-            <div>{contact.contact}</div>
-            </div>
+            <ContactCard contact={contact}></ContactCard>
         )
     })
     console.log("renderList",renderList)
