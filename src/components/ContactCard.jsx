@@ -16,7 +16,7 @@ const ContactCard = ({ contact, removeHandler }) => {
       </div>
       </div>
       <div onClick={removeContact}>
-        <i className="text-red-600 fa-solid fa-trash"></i>
+        <i className="text-red-600 fa-solid fa-trash cursor-pointer"></i>
       </div>
     </div>
   );
