@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import AddContact from "./components/AddContact";
 import ContactList from "./components/ContactList";
 import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes,Route,Switch } from "react-router-dom";
 function App() {
   // const contacts=[{name:"kiran",contact:999},{name:"achyuth", contact:1234}]
   const LOCAL_STORAGE_KEY="contacts"
@@ -28,12 +29,19 @@ function App() {
   return (
     <div className="App">
       {/* <h1 className="font-serif font-bold text-orange-500"> hey kiran~!!</h1> */}
+      <Router>
       <Header></Header>
-      <AddContact addContactHandler={addContactHandler}></AddContact>
+      <Routes>
+      <Route path="/add" Component={()=><AddContact addContactHandler={addContactHandler}></AddContact>} />
+      <Route path="/" Component={()=><ContactList contacts={contacts} removeHandler={removeHandler} />}/>
+      </Routes>
+      {/* <AddContact addContactHandler={addContactHandler}></AddContact>
       <ContactList
         contacts={contacts}
         removeHandler={removeHandler}
-      ></ContactList>
+      ></ContactList> */}
+      </Router>
+      
     </div>
   );
 }
