@@ -13,7 +13,7 @@ const ContactList = ({contacts,removeHandler}) => {
     return(
         <div>
             <Link to="/add">
-            <button className='bg-blue-500 text-white rounded-md p-2 w-full hover:bg-blue-600'>Go Back</button>
+            <button className='bg-blue-500 text-white rounded-md p-2  m-2 w-1/4 hover:bg-blue-600'>Go Back</button>
             </Link>
             {renderList}
         </div>

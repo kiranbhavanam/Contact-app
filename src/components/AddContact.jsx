@@ -1,64 +1,56 @@
-import React from "react";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-class AddContact extends React.Component {
-  state = { name: "", contact: "" };
-  addDetail = (e) => {
+const AddContact = ({ addContactHandler }) => {
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
+  const navigate = useNavigate(); // useNavigate hook for navigation
+
+  const addDetail = (e) => {
     e.preventDefault();
-    if (this.state.name === "" || this.state.contact === "") {
-      alert("All fields has to be filled");
+    if (name === "" || contact === "") {
+      alert("All fields are mandatory!");
       return;
     }
-    this.props.addContactHandler(this.state);
-    this.setState({ name: "", contact: "" });
+    addContactHandler({ name, contact });
+    setName("");
+    setContact("");
+    navigate("/"); // Navigate to the contact list
   };
-  render() {
-    return (
-      <div className="flex flex-col items-center mt-10">
-        <div className="flex items-start mb-5">
-          <h2 className="text-3xl font-bold">Add Contact</h2>
-        </div>
-        <form
-          action=""
-          onSubmit={this.addDetail}
-          className="flex flex-col justify-center items-center w-[400px] p-5 bg-white shadow-lg rounded-lg"
-        >
-          <div className="flex flex-col items-start mb-4 w-full">
-            <label htmlFor="name" className="text-lg mb-1">
-              Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              className="border border-gray-300 rounded-md p-2 w-full"
-              value={this.state.name}
-              onChange={(e) => {
-                this.setState({ name: e.target.value });
-              }}
-            />
-          </div>
-          <div className="flex flex-col items-start mb-4 w-full">
-            <label htmlFor="contact" className="text-lg mb-1">
-              Number
-            </label>
-            <input
-              type="number"
-              className="border border-gray-300 rounded-md p-2 w-full"
-              value={this.state.contact}
-              onChange={(e) => {
-                this.setState({ contact: e.target.value });
-              }}
-            />
-          </div>
-          <button
-            type="submit"
-            className="bg-blue-500 text-white rounded-md p-2 w-full hover:bg-blue-600"
-          >
-            Add Contact
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
+
+  return (
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+  <h2 className="text-2xl font-semibold text-gray-800 mb-6">Add Contact</h2>
+  <form onSubmit={addDetail} className="space-y-4">
+    <div className="flex flex-col">
+      <label htmlFor="name" className="text-sm font-medium text-gray-600">Name</label>
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        className="mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      />
+    </div>
+    <div className="flex flex-col">
+      <label htmlFor="contact" className="text-sm font-medium text-gray-600">Contact</label>
+      <input
+        type="text"
+        name="contact"
+        placeholder="Contact"
+        value={contact}
+        onChange={(e) => setContact(e.target.value)}
+        className="mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      />
+    </div>
+    <button className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+      Add
+    </button>
+  </form>
+</div>
+
+  );
+};
 
 export default AddContact;
