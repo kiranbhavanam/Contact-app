@@ -19,5 +19,4 @@ const ContactList = ({contacts,removeHandler}) => {
         </div>
     )
 }
-
 export default ContactList

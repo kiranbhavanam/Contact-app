@@ -22,7 +22,7 @@ function App() {
   };
   const removeHandler = (arg) => {
     // console.log("old contacts:" ,contacts)
-    const newContacts = contacts.filter((contact) => contact.name !== arg);
+    const newContacts = contacts.filter((contact) => contact.contact !== arg);
     // console.log("new contacts after removing: ",newContacts)
     setContacts(newContacts);
   };
@@ -31,7 +31,6 @@ function App() {
       {/* <h1 className="font-serif font-bold text-orange-500"> hey kiran~!!</h1> */}
       <Router>
       <Header></Header>
-
       <Routes>
       <Route path="/add" element={<AddContact addContactHandler={addContactHandler} />} />
       <Route path="/" element={<ContactList contacts={contacts} removeHandler={removeHandler} />} />
@@ -42,7 +41,6 @@ function App() {
         removeHandler={removeHandler}
       ></ContactList> */}
       </Router>
-      
     </div>
   );
 }
