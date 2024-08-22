@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+const notify=()=>{
+  toast("Added Contact")
+}
 const contactChecker=(val)=>{
   if(isNaN(val) || val.length!==10)
-    return false
-  return true
+    return true
+  return false
 }
 const AddContact = ({ addContactHandler }) => {
   const [name, setName] = useState("");
@@ -51,11 +56,12 @@ const AddContact = ({ addContactHandler }) => {
   
         className="mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
       />
-      <div className={contactChecker(contact)?'hidden':'text-red-500 text-sm'}>contact must be 10 digit number</div>
+      <div className={contactChecker(contact)?'text-red-500 text-sm':'hidden'}>contact must be 10 digit number</div>
     </div>
-    <button className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+    <button className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" onClick={notify}>
       Add
     </button>
+    <ToastContainer/>
   </form>
 </div>
 
